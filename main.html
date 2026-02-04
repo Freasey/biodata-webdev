@@ -3,87 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Saya</title>
+    <title>Blog Saya - Template</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background: #f4f4f4;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f9f7f4;
+            padding: 20px;
         }
-        header {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 2rem;
-        }
+
         .container {
             max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 20px;
-        }
-        .post {
-            background: #fff;
-            margin-bottom: 2rem;
-            padding: 2rem;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 60px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .post h2 {
-            color: #333;
-            margin-bottom: 0.5rem;
+
+        /* Judul - 15% */
+        .judul {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #e0e0e0;
         }
-        .post-date {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+
+        .judul h1 {
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.3;
         }
-        .post p {
-            color: #444;
+
+        .judul .meta {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        /* Section Headers */
+        .section-header {
+            color: #e74c3c;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #e74c3c;
+        }
+
+        /* Perjalanan Hidup - 35% */
+        .perjalanan-hidup {
+            margin-bottom: 40px;
+        }
+
+        .perjalanan-hidup p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+
+        /* Pelajaran yang Dipereoleh - 30% */
+        .pelajaran {
+            margin-bottom: 40px;
+        }
+
+        .pelajaran p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+
+        /* Kesimpulan - 20% */
+        .kesimpulan {
+            margin-bottom: 40px;
+        }
+
+        .kesimpulan p {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #95a5a6;
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .judul h1 {
+                font-size: 2em;
+            }
+
+            .section-header {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Blog Saya</h1>
-        <p>Catatan dan tulisan random</p>
-    </header>
+    <div class="container">
+        
+        <!-- 1. JUDUL (15%) -->
+        <div class="judul">
+            <h1>Perjalanan Menemukan Jati Diri di Usia Seperempat Abad</h1>
+            <div class="meta">Ditulis pada 4 Februari 2026 | 5 menit baca</div>
+        </div>
 
-    <div class="container" id="posts">
-        <!-- Posts akan muncul di sini -->
+        <!-- 2. PERJALANAN HIDUP (35% - minimal 4 paragraf) -->
+        <div class="perjalanan-hidup">
+            <h2 class="section-header">Perjalanan Hidup</h2>
+            
+            <p>
+                Lima tahun yang lalu, saya adalah seseorang yang sama sekali berbeda. Saya baru saja lulus kuliah dengan IPK yang cemerlang, namun hati saya kosong. Setiap hari terasa seperti menjalani skenario yang ditulis orang lain. Pagi bangun, berangkat kerja, pulang, tidur, lalu ulangi. Tidak ada gairah, tidak ada semangat, hanya rutinitas yang menggerogoti jiwa perlahan-lahan.
+            </p>
+
+            <p>
+                Titik balik terjadi ketika saya menghadiri reuni SMA. Melihat teman-teman lama yang mata mereka berbinar saat bercerita tentang pekerjaan, hobi, atau apapun yang mereka geluti, membuat saya tersadar. Saya tidak punya cerita. Saya hanya punya daftar tugas yang selesai dan gaji yang masuk setiap bulan. Malam itu, dalam perjalanan pulang, saya menangis. Bukan karena sedih, tapi karena kaget dengan kehampaan yang selama ini saya tutupi dengan kesibukan.
+            </p>
+
+            <p>
+                Sejak saat itu, saya memutuskan untuk mengambil jalan yang berbeda. Saya mulai mencoba hal-hal baru yang selama ini saya hindari karena takut gagal atau dianggap aneh. Saya ikut kelas menulis, belajar fotografi, bahkan mencoba mendaki gunung meski saya orangnya cenderung malas berolahraga. Setiap pengalaman baru membuka pintu pemahaman tentang siapa saya sebenarnya. Ternyata saya suka tantangan fisik, saya senang mengekspresikan diri lewat kata-kata, dan saya terinspirasi oleh keindahan alam.
+            </p>
+
+            <p>
+                Perjalanan ini tidak selalu mulus. Ada kalanya saya merasa bodoh karena memulai dari nol di usia yang menurut standar sosial seharusnya sudah mapan. Ada juga tekanan dari keluarga yang bertanya kapan saya akan "serius" dengan hidup. Tapi setiap kali ragu datang, saya ingat mata kosong saya di reuni itu. Dan saya tahu, saya tidak ingin kembali ke sana.
+            </p>
+
+            <p>
+                Kini, setelah lima tahun menjalani berbagai eksperimen kehidupan, saya bisa mengatakan bahwa saya lebih mengenal diri sendiri. Saya tahu apa yang membuat saya bahagia, apa nilai-nilai yang saya pegang, dan ke arah mana saya ingin melangkah. Prosesnya panjang dan masih terus berlanjut, tapi sekarang saya berjalan dengan mata terbuka dan hati yang lebih ringan.
+            </p>
+        </div>
+
+        <!-- 3. PELAJARAN YANG DIPEREOLEH (30% - minimal 2 paragraf dalam bentuk narasi) -->
+        <div class="pelajaran">
+            <h2 class="section-header">Pelajaran yang Dipereoleh</h2>
+            
+            <p>
+                Hal terpenting yang saya pelajari adalah bahwa jati diri bukanlah sesuatu yang kita temukan seperti menemukan kunci yang hilang. Jati diri adalah sesuatu yang kita bangun, setiap hari, melalui pilihan-pilihan kecil yang kita buat. Ketika saya memilih untuk mencoba hal baru meski takut, ketika saya memilih untuk jujur tentang apa yang saya rasakan, ketika saya memilih untuk tidak mengikuti ekspektasi orang lain secara membabi buta – di sanalah jati diri saya terbentuk. Saya belajar bahwa keberanian bukan berarti tidak takut, tapi tetap melangkah meski takut. Dan setiap langkah kecil itu, betapapun remehnya, adalah investasi untuk menjadi versi terbaik dari diri saya.
+            </p>
+
+            <p>
+                Pelajaran kedua yang sangat berharga adalah pentingnya memberi ruang untuk gagal. Selama ini saya sangat perfeksionis, takut mencoba sesuatu kalau tidak yakin akan berhasil. Tapi dalam lima tahun terakhir, saya gagal berkali-kali. Tulisan pertama saya jelek. Foto-foto awal saya buram. Pendakian pertama saya hampir menyerah di tengah jalan. Namun dari setiap kegagalan itu, saya belajar lebih banyak daripada dari kesuksesan yang mudah. Saya belajar untuk tidak terlalu keras pada diri sendiri, untuk tertawa pada kesalahan, dan untuk melihat kegagalan sebagai feedback, bukan final judgment. Hidup menjadi jauh lebih ringan ketika saya berhenti mencoba sempurna dan mulai berusaha menjadi otentik.
+            </p>
+
+            <p>
+                Yang terakhir, saya belajar bahwa tidak apa-apa untuk berjalan di jalur yang berbeda dari orang lain. Masyarakat punya timeline yang kaku: lulus, kerja, menikah, punya anak, pensiun. Tapi hidup saya tidak mengikuti pola itu, dan itu tidak masalah. Saya belajar untuk menghargai perjalanan unik saya sendiri, dengan kecepatan saya sendiri, tanpa terus-menerus membandingkan diri dengan orang lain. Kesadaran ini membebaskan saya dari kecemasan yang selama ini membebani.
+            </p>
+        </div>
+
+        <!-- 4. KESIMPULAN (20% - minimal 1 paragraf) -->
+        <div class="kesimpulan">
+            <h2 class="section-header">Kesimpulan</h2>
+            
+            <p>
+                Menemukan jati diri adalah perjalanan seumur hidup, bukan destinasi yang bisa dicapai dan kemudian selesai. Lima tahun yang lalu saya merasa hilang, dan kini saya merasa lebih terhubung dengan diri sendiri. Tapi saya juga tahu bahwa saya akan terus berubah, belajar, dan berkembang. Dan itu adalah hal yang indah. Jika Anda merasa kehilangan arah saat ini, ketahuilah bahwa Anda tidak sendirian. Mulailah dengan langkah kecil, berani mencoba, dan jujur pada diri sendiri. Berikan waktu untuk prosesnya, dan percayalah bahwa setiap pengalaman, baik manis maupun pahit, membentuk Anda menjadi pribadi yang lebih utuh. Hidup terlalu singkat untuk dijalani dengan setengah hati.
+            </p>
+
+            <p>
+                Saya berharap cerita saya bisa menginspirasi Anda untuk berani memulai perjalanan Anda sendiri. Tidak peduli seberapa tua atau muda Anda, tidak pernah terlambat untuk mengenal diri sendiri lebih dalam. Karena pada akhirnya, hubungan terpenting yang akan Anda miliki sepanjang hidup adalah hubungan dengan diri Anda sendiri.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Blog Pribadi Saya. Semua hak cipta dilindungi.</p>
+        </div>
+
     </div>
-
-    <script>
-        // Array untuk menyimpan post-post blog
-        const posts = [
-            {
-                title: "Post Pertama",
-                date: "4 Februari 2025",
-                content: "Ini adalah post pertama di blog saya. Mulai sekarang saya akan rajin nulis di sini!"
-            },
-            {
-                title: "Belajar GitHub Pages",
-                date: "4 Februari 2025",
-                content: "Ternyata mudah banget bikin blog pakai GitHub Pages. Gratis lagi!"
-            }
-        ];
-
-        // Render posts
-        const postsContainer = document.getElementById('posts');
-        posts.forEach(post => {
-            const postHTML = `
-                <div class="post">
-                    <h2>${post.title}</h2>
-                    <div class="post-date">${post.date}</div>
-                    <p>${post.content}</p>
-                </div>
-            `;
-            postsContainer.innerHTML += postHTML;
-        });
-    </script>
 </body>
 </html>

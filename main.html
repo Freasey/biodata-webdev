@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Saya - Template</title>
+    <title>Perjalanan Menemukan Diri - Blog Modern</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --color-bg: #0a0a0f;
+            --color-surface: #141420;
+            --color-primary: #ff6b9d;
+            --color-secondary: #feca57;
+            --color-accent: #48dbfb;
+            --color-text: #e8e8f0;
+            --color-text-muted: #a0a0b8;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'IBM Plex Sans', sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,191 +25,323 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
             line-height: 1.8;
-            color: #333;
-            background-color: #f9f7f4;
-            padding: 20px;
+            overflow-x: hidden;
         }
 
+        /* Background Effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 107, 157, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(72, 219, 251, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 80%, rgba(254, 202, 87, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: drift 30s ease-in-out infinite;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-5%, 5%) rotate(1deg); }
+            66% { transform: translate(5%, -3%) rotate(-1deg); }
+        }
+
+        /* Container */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background-color: #fff;
-            padding: 60px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-
-        /* Judul - 15% */
-        .judul {
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 3px solid #e0e0e0;
-        }
-
-        .judul h1 {
-            font-size: 2.8em;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .judul .meta {
-            color: #7f8c8d;
-            font-size: 0.95em;
-            font-style: italic;
-        }
-
-        /* Section Headers */
-        .section-header {
-            color: #e74c3c;
-            font-size: 1.8em;
-            margin-top: 40px;
-            margin-bottom: 25px;
-            font-weight: 600;
+            padding: 80px 40px;
             position: relative;
-            padding-bottom: 10px;
         }
 
-        .section-header::after {
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 100px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .blog-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 80px;
+            position: relative;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.5s; }
+        .section:nth-child(2) { animation-delay: 0.6s; }
+        .section:nth-child(3) { animation-delay: 0.7s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+
+        .section-number {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--color-text);
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Paragraph Styling */
+        .content {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid rgba(255, 107, 157, 0.2);
+        }
+
+        .paragraph {
+            margin-bottom: 35px;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--color-text);
+            font-weight: 300;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .paragraph:hover {
+            transform: translateX(5px);
+        }
+
+        .paragraph::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: #e74c3c;
+            left: -32px;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 107, 157, 0.5);
         }
 
-        /* Perjalanan Hidup - 35% */
-        .perjalanan-hidup {
-            margin-bottom: 40px;
+        /* Decorative Elements */
+        .decorator {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
         }
 
-        .perjalanan-hidup p {
-            margin-bottom: 20px;
-            text-align: justify;
-            font-size: 1.05em;
+        .decorator-1 {
+            top: 10%;
+            right: -10%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            filter: blur(100px);
         }
 
-        /* Pelajaran yang Dipereoleh - 30% */
-        .pelajaran {
-            margin-bottom: 40px;
+        .decorator-2 {
+            bottom: 20%;
+            left: -15%;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+            filter: blur(120px);
         }
 
-        .pelajaran p {
-            margin-bottom: 20px;
-            text-align: justify;
-            font-size: 1.05em;
-        }
-
-        /* Kesimpulan - 20% */
-        .kesimpulan {
-            margin-bottom: 40px;
-        }
-
-        .kesimpulan p {
-            margin-bottom: 20px;
-            text-align: justify;
-            font-size: 1.05em;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #e0e0e0;
-            text-align: center;
-            color: #95a5a6;
-            font-size: 0.9em;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 30px 20px;
+                padding: 50px 25px;
             }
 
-            .judul h1 {
-                font-size: 2em;
+            .section {
+                margin-bottom: 60px;
             }
 
-            .section-header {
-                font-size: 1.5em;
+            .content {
+                padding-left: 20px;
             }
+
+            .paragraph::before {
+                left: -22px;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.1s ease;
         }
     </style>
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="decorator decorator-1"></div>
+    <div class="decorator decorator-2"></div>
+
     <div class="container">
-        
-        <!-- 1. JUDUL (15%) -->
-        <div class="judul">
-            <h1>Perjalanan Menemukan Jati Diri di Usia Seperempat Abad</h1>
-            <div class="meta">Ditulis pada 4 Februari 2026 | 5 menit baca</div>
-        </div>
+        <header>
+            <h1 class="blog-title">Perjalanan Menemukan Diri</h1>
+            <p class="subtitle">Sebuah refleksi tentang kehidupan, pembelajaran, dan transformasi pribadi</p>
+        </header>
 
-        <!-- 2. PERJALANAN HIDUP (35% - minimal 4 paragraf) -->
-        <div class="perjalanan-hidup">
-            <h2 class="section-header">Perjalanan Hidup</h2>
-            
-            <p>
-                Lima tahun yang lalu, saya adalah seseorang yang sama sekali berbeda. Saya baru saja lulus kuliah dengan IPK yang cemerlang, namun hati saya kosong. Setiap hari terasa seperti menjalani skenario yang ditulis orang lain. Pagi bangun, berangkat kerja, pulang, tidur, lalu ulangi. Tidak ada gairah, tidak ada semangat, hanya rutinitas yang menggerogoti jiwa perlahan-lahan.
-            </p>
+        <main>
+            <!-- Section 1: Judul -->
+            <section class="section">
+                <div class="section-number">01</div>
+                <h2 class="section-title">Judul</h2>
+                <p class="section-subtitle">(1 kalimat pendek yang menarik – 15%)</p>
+                
+                <div class="content">
+                    <p class="paragraph">
+                        Kehidupan adalah perjalanan panjang yang penuh dengan lika-liku, tantangan, dan pembelajaran yang tak terduga di setiap sudutnya.
+                    </p>
+                </div>
+            </section>
 
-            <p>
-                Titik balik terjadi ketika saya menghadiri reuni SMA. Melihat teman-teman lama yang mata mereka berbinar saat bercerita tentang pekerjaan, hobi, atau apapun yang mereka geluti, membuat saya tersadar. Saya tidak punya cerita. Saya hanya punya daftar tugas yang selesai dan gaji yang masuk setiap bulan. Malam itu, dalam perjalanan pulang, saya menangis. Bukan karena sedih, tapi karena kaget dengan kehampaan yang selama ini saya tutupi dengan kesibukan.
-            </p>
+            <!-- Section 2: Perjalanan Hidup -->
+            <section class="section">
+                <div class="section-number">02</div>
+                <h2 class="section-title">Perjalanan Hidup</h2>
+                <p class="section-subtitle">(minimal 4 paragraf – 35%)</p>
+                
+                <div class="content">
+                    <p class="paragraph">
+                        Saya tumbuh di sebuah kota kecil yang tenang, di mana hari-hari diisi dengan rutinitas sederhana dan kehangatan keluarga. Masa kecil saya dipenuhi dengan keingintahuan tanpa batas terhadap dunia di sekitar. Setiap buku yang saya baca membuka jendela baru, setiap percakapan membawa perspektif yang berbeda, dan setiap pengalaman mengajarkan sesuatu yang berharga tentang kehidupan.
+                    </p>
 
-            <p>
-                Sejak saat itu, saya memutuskan untuk mengambil jalan yang berbeda. Saya mulai mencoba hal-hal baru yang selama ini saya hindari karena takut gagal atau dianggap aneh. Saya ikut kelas menulis, belajar fotografi, bahkan mencoba mendaki gunung meski saya orangnya cenderung malas berolahraga. Setiap pengalaman baru membuka pintu pemahaman tentang siapa saya sebenarnya. Ternyata saya suka tantangan fisik, saya senang mengekspresikan diri lewat kata-kata, dan saya terinspirasi oleh keindahan alam.
-            </p>
+                    <p class="paragraph">
+                        Ketika menginjak masa remaja, saya mulai merasakan tekanan untuk menemukan jati diri. Ekspektasi dari keluarga, teman, dan masyarakat seringkali bertentangan dengan apa yang sebenarnya saya inginkan. Periode ini penuh dengan kebingungan dan pencarian identitas. Saya mencoba berbagai hal—bergabung dengan komunitas, mengeksplorasi hobi, dan menjalin hubungan dengan orang-orang dari berbagai latar belakang.
+                    </p>
 
-            <p>
-                Perjalanan ini tidak selalu mulus. Ada kalanya saya merasa bodoh karena memulai dari nol di usia yang menurut standar sosial seharusnya sudah mapan. Ada juga tekanan dari keluarga yang bertanya kapan saya akan "serius" dengan hidup. Tapi setiap kali ragu datang, saya ingat mata kosong saya di reuni itu. Dan saya tahu, saya tidak ingin kembali ke sana.
-            </p>
+                    <p class="paragraph">
+                        Transisi menuju kehidupan dewasa membawa tantangan yang lebih kompleks. Keputusan tentang karir, hubungan, dan arah hidup harus diambil dengan lebih serius. Saya mengalami kegagalan yang menyakitkan dan kesuksesan yang membanggakan. Setiap pengalaman, baik yang pahit maupun manis, membentuk karakter dan memberikan pemahaman yang lebih dalam tentang siapa saya sebenarnya.
+                    </p>
 
-            <p>
-                Kini, setelah lima tahun menjalani berbagai eksperimen kehidupan, saya bisa mengatakan bahwa saya lebih mengenal diri sendiri. Saya tahu apa yang membuat saya bahagia, apa nilai-nilai yang saya pegang, dan ke arah mana saya ingin melangkah. Prosesnya panjang dan masih terus berlanjut, tapi sekarang saya berjalan dengan mata terbuka dan hati yang lebih ringan.
-            </p>
-        </div>
+                    <p class="paragraph">
+                        Di tengah semua perjalanan ini, saya menyadari bahwa hidup bukanlah tentang mencapai tujuan tertentu, melainkan tentang proses pembelajaran yang berkelanjutan. Setiap hari adalah kesempatan baru untuk tumbuh, berubah, dan menjadi versi yang lebih baik dari diri sendiri. Pengalaman-pengalaman yang saya lalui mengajarkan saya tentang ketahanan, empati, dan pentingnya tetap setia pada nilai-nilai yang saya pegang.
+                    </p>
+                </div>
+            </section>
 
-        <!-- 3. PELAJARAN YANG DIPEREOLEH (30% - minimal 2 paragraf dalam bentuk narasi) -->
-        <div class="pelajaran">
-            <h2 class="section-header">Pelajaran yang Dipereoleh</h2>
-            
-            <p>
-                Hal terpenting yang saya pelajari adalah bahwa jati diri bukanlah sesuatu yang kita temukan seperti menemukan kunci yang hilang. Jati diri adalah sesuatu yang kita bangun, setiap hari, melalui pilihan-pilihan kecil yang kita buat. Ketika saya memilih untuk mencoba hal baru meski takut, ketika saya memilih untuk jujur tentang apa yang saya rasakan, ketika saya memilih untuk tidak mengikuti ekspektasi orang lain secara membabi buta – di sanalah jati diri saya terbentuk. Saya belajar bahwa keberanian bukan berarti tidak takut, tapi tetap melangkah meski takut. Dan setiap langkah kecil itu, betapapun remehnya, adalah investasi untuk menjadi versi terbaik dari diri saya.
-            </p>
+            <!-- Section 3: Pelajaran Apa Saja Yang Dipereoleh -->
+            <section class="section">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Pelajaran Apa Saja Yang Diperoleh</h2>
+                <p class="section-subtitle">(dalam bentuk narasi, minimal 2 paragraf – 30%)</p>
+                
+                <div class="content">
+                    <p class="paragraph">
+                        Salah satu pelajaran terpenting yang saya peroleh adalah bahwa kegagalan bukanlah akhir dari segalanya, melainkan awal dari pemahaman yang lebih dalam. Setiap kali saya jatuh, saya belajar untuk bangkit dengan lebih kuat dan lebih bijaksana. Saya memahami bahwa kesalahan adalah bagian tak terpisahkan dari pertumbuhan, dan menerima ketidaksempurnaan diri adalah langkah pertama menuju kedewasaan emosional. Pelajaran ini mengubah cara saya memandang tantangan—dari sesuatu yang harus dihindari menjadi peluang untuk berkembang.
+                    </p>
 
-            <p>
-                Pelajaran kedua yang sangat berharga adalah pentingnya memberi ruang untuk gagal. Selama ini saya sangat perfeksionis, takut mencoba sesuatu kalau tidak yakin akan berhasil. Tapi dalam lima tahun terakhir, saya gagal berkali-kali. Tulisan pertama saya jelek. Foto-foto awal saya buram. Pendakian pertama saya hampir menyerah di tengah jalan. Namun dari setiap kegagalan itu, saya belajar lebih banyak daripada dari kesuksesan yang mudah. Saya belajar untuk tidak terlalu keras pada diri sendiri, untuk tertawa pada kesalahan, dan untuk melihat kegagalan sebagai feedback, bukan final judgment. Hidup menjadi jauh lebih ringan ketika saya berhenti mencoba sempurna dan mulai berusaha menjadi otentik.
-            </p>
+                    <p class="paragraph">
+                        Pelajaran lain yang tak kalah berharga adalah pentingnya hubungan yang autentik dan bermakna. Di dunia yang semakin terhubung namun paradoksnya semakin terpisah, saya menyadari bahwa kualitas lebih penting daripada kuantitas dalam hal relasi. Beberapa orang yang benar-benar peduli dan mendukung jauh lebih berharga daripada ratusan kenalan yang dangkal. Saya belajar untuk menghargai kehadiran orang-orang yang membantu membentuk saya, yang jujur dalam memberikan kritik, dan yang merayakan kesuksesan saya dengan tulus. Dari mereka, saya memahami arti sebenarnya dari koneksi manusia yang mendalam.
+                    </p>
+                </div>
+            </section>
 
-            <p>
-                Yang terakhir, saya belajar bahwa tidak apa-apa untuk berjalan di jalur yang berbeda dari orang lain. Masyarakat punya timeline yang kaku: lulus, kerja, menikah, punya anak, pensiun. Tapi hidup saya tidak mengikuti pola itu, dan itu tidak masalah. Saya belajar untuk menghargai perjalanan unik saya sendiri, dengan kecepatan saya sendiri, tanpa terus-menerus membandingkan diri dengan orang lain. Kesadaran ini membebaskan saya dari kecemasan yang selama ini membebani.
-            </p>
-        </div>
-
-        <!-- 4. KESIMPULAN (20% - minimal 1 paragraf) -->
-        <div class="kesimpulan">
-            <h2 class="section-header">Kesimpulan</h2>
-            
-            <p>
-                Menemukan jati diri adalah perjalanan seumur hidup, bukan destinasi yang bisa dicapai dan kemudian selesai. Lima tahun yang lalu saya merasa hilang, dan kini saya merasa lebih terhubung dengan diri sendiri. Tapi saya juga tahu bahwa saya akan terus berubah, belajar, dan berkembang. Dan itu adalah hal yang indah. Jika Anda merasa kehilangan arah saat ini, ketahuilah bahwa Anda tidak sendirian. Mulailah dengan langkah kecil, berani mencoba, dan jujur pada diri sendiri. Berikan waktu untuk prosesnya, dan percayalah bahwa setiap pengalaman, baik manis maupun pahit, membentuk Anda menjadi pribadi yang lebih utuh. Hidup terlalu singkat untuk dijalani dengan setengah hati.
-            </p>
-
-            <p>
-                Saya berharap cerita saya bisa menginspirasi Anda untuk berani memulai perjalanan Anda sendiri. Tidak peduli seberapa tua atau muda Anda, tidak pernah terlambat untuk mengenal diri sendiri lebih dalam. Karena pada akhirnya, hubungan terpenting yang akan Anda miliki sepanjang hidup adalah hubungan dengan diri Anda sendiri.
-            </p>
-        </div>
-
-        <div class="footer">
-            <p>&copy; 2026 Blog Pribadi Saya. Semua hak cipta dilindungi.</p>
-        </div>
-
+            <!-- Section 4: Kesimpulan -->
+            <section class="section">
+                <div class="section-number">04</div>
+                <h2 class="section-title">Kesimpulan</h2>
+                <p class="section-subtitle">(dalam bentuk narasi, minimal 1 paragraf – 20%)</p>
+                
+                <div class="content">
+                    <p class="paragraph">
+                        Perjalanan menemukan diri adalah proses yang tidak pernah benar-benar selesai. Setiap tahap kehidupan membawa pemahaman baru, tantangan yang berbeda, dan peluang untuk transformasi. Yang saya pelajari adalah bahwa kunci dari kehidupan yang bermakna bukanlah mencapai kesempurnaan atau tujuan tertentu, melainkan terus tumbuh, belajar, dan beradaptasi dengan perubahan. Saya kini memandang hidup dengan lebih sabar dan penuh rasa syukur, menghargai setiap momen sebagai bagian dari narasi yang lebih besar. Ke depan, saya berkomitmen untuk tetap terbuka terhadap pengalaman baru, terus belajar dari setiap situasi, dan berbagi pembelajaran saya dengan orang lain yang mungkin sedang menjalani perjalanan serupa.
+                    </p>
+                </div>
+            </section>
+        </main>
     </div>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Smooth reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>

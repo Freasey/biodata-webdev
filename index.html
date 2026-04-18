@@ -1,350 +1,484 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perjalanan Menemukan Diri - Blog Modern</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-bg: #0a0a0f;
-            --color-surface: #141420;
-            --color-primary: #ff6b9d;
-            --color-secondary: #feca57;
-            --color-accent: #48dbfb;
-            --color-text: #e8e8f0;
-            --color-text-muted: #a0a0b8;
-            --font-display: 'Playfair Display', serif;
-            --font-body: 'IBM Plex Sans', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daffa — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    :root {
+      --bg: #f5f3ee;
+      --surface: #edeae3;
+      --ink: #1a1a18;
+      --ink-muted: #6b6860;
+      --accent: #2d6a4f;
+      --accent-light: #d8f3dc;
+      --accent-dark: #1b4332;
+      --border: rgba(26,26,24,.12);
+      --nav-h: 64px;
+    }
 
-        body {
-            font-family: var(--font-body);
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
+    html { scroll-behavior: smooth; }
 
-        /* Background Effects */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 20%, rgba(255, 107, 157, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 60%, rgba(72, 219, 251, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 50% 80%, rgba(254, 202, 87, 0.05) 0%, transparent 50%);
-            z-index: -1;
-            animation: drift 30s ease-in-out infinite;
-        }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        @keyframes drift {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(-5%, 5%) rotate(1deg); }
-            66% { transform: translate(5%, -3%) rotate(-1deg); }
-        }
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(245,243,238,.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
 
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 80px 40px;
-            position: relative;
-        }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -.3px;
+      color: var(--ink);
+      text-decoration: none;
+    }
 
-        /* Header Section */
-        header {
-            text-align: center;
-            margin-bottom: 100px;
-            animation: fadeInUp 1s ease-out;
-        }
+    .nav-logo span {
+      color: var(--accent);
+    }
 
-        .blog-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease-out 0.2s backwards;
-            letter-spacing: -0.02em;
-        }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--color-text-muted);
-            font-weight: 300;
-            letter-spacing: 0.05em;
-            animation: fadeInUp 1s ease-out 0.4s backwards;
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-muted);
+      font-size: .9rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 100px;
+      transition: background .2s, color .2s;
+    }
 
-        /* Section Styling */
-        .section {
-            margin-bottom: 80px;
-            position: relative;
-            animation: fadeInUp 1s ease-out backwards;
-        }
+    .nav-links a:hover {
+      background: var(--surface);
+      color: var(--ink);
+    }
 
-        .section:nth-child(1) { animation-delay: 0.5s; }
-        .section:nth-child(2) { animation-delay: 0.6s; }
-        .section:nth-child(3) { animation-delay: 0.7s; }
-        .section:nth-child(4) { animation-delay: 0.8s; }
+    .nav-links a.active {
+      background: var(--accent);
+      color: #fff;
+    }
 
-        .section-number {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 12px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-h) + 60px) 5% 80px;
+    }
 
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--color-text);
-            line-height: 1.2;
-            position: relative;
-            display: inline-block;
-        }
+    .hero-inner {
+      max-width: 720px;
+    }
 
-        .section-subtitle {
-            font-size: 1rem;
-            color: var(--color-text-muted);
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .3px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      animation: fadeUp .6s ease both;
+    }
 
-        /* Paragraph Styling */
-        .content {
-            position: relative;
-            padding-left: 30px;
-            border-left: 2px solid rgba(255, 107, 157, 0.2);
-        }
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease infinite;
+    }
 
-        .paragraph {
-            margin-bottom: 35px;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: var(--color-text);
-            font-weight: 300;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
 
-        .paragraph:hover {
-            transform: translateX(5px);
-        }
+    .hero-greeting {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: var(--ink-muted);
+      margin-bottom: 10px;
+      animation: fadeUp .6s .1s ease both;
+    }
 
-        .paragraph::before {
-            content: '';
-            position: absolute;
-            left: -32px;
-            top: 10px;
-            width: 6px;
-            height: 6px;
-            background: var(--color-primary);
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 107, 157, 0.5);
-        }
+    .hero-name {
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      animation: fadeUp .6s .15s ease both;
+    }
 
-        /* Decorative Elements */
-        .decorator {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            opacity: 0.03;
-            z-index: -1;
-            pointer-events: none;
-        }
+    .hero-name .dot {
+      color: var(--accent);
+    }
 
-        .decorator-1 {
-            top: 10%;
-            right: -10%;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            filter: blur(100px);
-        }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      animation: fadeUp .6s .2s ease both;
+    }
 
-        .decorator-2 {
-            bottom: 20%;
-            left: -15%;
-            background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
-            filter: blur(120px);
-        }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 600;
+      padding: 13px 26px;
+      border-radius: 100px;
+      transition: background .2s, transform .2s;
+      animation: fadeUp .6s .25s ease both;
+    }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .hero-cta:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 50px 25px;
-            }
+    .hero-cta svg { transition: transform .2s; }
+    .hero-cta:hover svg { transform: translateX(3px); }
 
-            .section {
-                margin-bottom: 60px;
-            }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-            .content {
-                padding-left: 20px;
-            }
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 5%;
+    }
 
-            .paragraph::before {
-                left: -22px;
-            }
-        }
+    /* ── ABOUT ── */
+    #about {
+      padding: 100px 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-        /* Scroll Progress Bar */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-            width: 0%;
-            z-index: 1000;
-            transition: width 0.1s ease;
-        }
-    </style>
+    /* ── PROFILE PICTURE ── */
+    .profile-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      position: relative;
+      width: 300px;
+    }
+
+    .profile-bg-shape {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-light);
+      border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%;
+      z-index: 0;
+    }
+
+    .profile-img-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 260px;
+      height: 300px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 3px solid #fff;
+      box-shadow: 0 12px 40px rgba(0,0,0,.1);
+    }
+
+    /* ── SVG AVATAR fallback ── */
+    .avatar-svg {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #c7f5d4 0%, #74c69d 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .profile-badge {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+      z-index: 2;
+    }
+
+    /* ── ABOUT TEXT ── */
+    .about-text .section-label {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .about-text h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: var(--ink-muted);
+      font-size: .97rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* ── INFO / CONTACT ── */
+    .contact-grid {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .contact-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+
+    .contact-item:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+    }
+
+    .contact-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+
+    .contact-value {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 5%;
+      font-size: .82rem;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      #about {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .profile-wrap { order: -1; }
+      .profile-card { width: 240px; }
+      .profile-img-wrapper { width: 200px; height: 240px; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    
-    <div class="decorator decorator-1"></div>
-    <div class="decorator decorator-2"></div>
 
-    <div class="container">
-        <header>
-            <h1 class="blog-title">Kisah Sukses Bill Gate</h1>
-            <p class="subtitle">Dari Garasi ke Puncak Dunia Teknologi</p>
-        </header>
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#home" class="nav-logo">daffa<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
 
-        <main>
-            <!-- Section 1: Judul -->
-            <section class="section">
-                <div class="section-number">01</div>
-                <h2 class="section-title">Bill Gates</h2>
-                <img src="https://hard-drive.net/wp-content/uploads/sites/10/2021/02/bill-gates.jpg" alt="" style="width: 600px; height: auto;">
-                
-                <div class="content">
-                    <p class="paragraph">
-                        Visioner yang Mengubah Dunia Melalui Teknologi
-                    </p>
-                </div>
-            </section>
+  <!-- HERO SECTION -->
+  <section id="home">
+    <div class="hero-inner">
+      <div class="hero-chip">
+        <span class="chip-dot"></span>
+        Available for opportunities
+      </div>
+      <p class="hero-greeting">Halo, selamat datang 👋</p>
+      <h1 class="hero-name">
+        Saya Daffa<span class="dot">.</span><br>
+        Mahasiswa Teknik<br>Informatika
+      </h1>
+      <p class="hero-sub">
+        Seorang mahasiswa yang antusias di bidang pengembangan perangkat lunak dan sistem informasi. Senang belajar hal baru dan membangun solusi yang bermanfaat.
+      </p>
+      <a href="#about" class="hero-cta">
+        Kenali saya lebih lanjut
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
 
-            <!-- Section 2: Perjalanan Hidup -->
-            <section class="section">
-                <div class="section-number">02</div>
-                <h2 class="section-title">Perjalanan Hidup</h2>
-                
-                <div class="content">
-                    <p class="paragraph">
-                        William Henry Gates III lahir pada 28 Oktober 1955 di Seattle, Washington. Sejak kecil, Bill menunjukkan minat luar biasa terhadap komputer dan pemrograman. Pada usia 13 tahun, ia sudah menulis program komputer pertamanya di sekolah Lakeside.
-                    </p>
+  <hr class="section-divider">
 
-                    <p class="paragraph">
-                        Kehidupan Bill Gates berubah drastis ketika ia memutuskan untuk meninggalkan Harvard University pada tahun 1975. Keputusan berani ini diambil untuk fokus mendirikan Microsoft bersama Paul Allen. Mereka memulai dari garasi kecil dengan visi besar: menempatkan komputer di setiap rumah dan di setiap meja.
-                    </p>
-                    <img src="https://scontent.fcgk43-1.fna.fbcdn.net/v/t39.30808-6/525333931_734650432657919_4604500718196151625_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGK2fqfK9kpsb0EqVRhveZkalwtnbtzqitqXC2du3OqK5gSTCenC7-TchYx6rXMx7uCTEiDxMdhFOdB-Hc_y_II&_nc_ohc=2c73CcWglccQ7kNvwFizhor&_nc_oc=AdlAnm7Vv2ZYm4biXQbonrv_FK7_hSQmB6BXHJvmj59WmLodQQHqenLEXPRVK0y8exhLGmhmz69-2VY7ZKahwbDr&_nc_zt=23&_nc_ht=scontent.fcgk43-1.fna&_nc_gid=gxwdjVcUdsYlbpO-pvgWBw&oh=00_AfsvcFFRD0WNfULzR1Xy9Su57CvBKVK5gy0e087WaZSjbw&oe=6989234A" alt="" style="width: 400px; height: auto;">
+  <!-- ABOUT + PROFILE + INFO -->
+  <section id="about">
 
-                    <p class="paragraph">
-                        Perjalanan Microsoft tidaklah mulus. Gates menghadapi berbagai tantangan, mulai dari persaingan ketat dengan perusahaan teknologi lain hingga masalah hukum. Namun, dedikasinya yang luar biasa dan kemampuannya membaca tren teknologi membuat Microsoft berkembang pesat. Peluncuran Windows pada tahun 1985 menjadi titik balik yang mengubah industri komputer personal selamanya.
-                    </p>
-
-                    <p class="paragraph">
-                        Di bawah kepemimpinan Gates, Microsoft tumbuh menjadi raksasa teknologi dunia. Ia tidak hanya fokus pada kesuksesan bisnis, tetapi juga pada inovasi yang membawa dampak nyata bagi masyarakat. Ketekunannya bekerja hingga 16 jam sehari dan kemampuannya memotivasi tim menunjukkan bahwa kesuksesan membutuhkan pengorbanan dan kerja keras.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 3: Pelajaran Apa Saja Yang Dipereoleh -->
-            <section class="section">
-                <div class="section-number">03</div>
-                <h2 class="section-title">Pelajaran Apa Saja Yang Diperoleh</h2>
-                
-                <div class="content">
-                    <p class="paragraph">
-                        Dari perjalanan Bill Gates, kita belajar bahwa keberanian mengambil risiko adalah kunci kesuksesan. Meninggalkan universitas bergengsi seperti Harvard bukanlah keputusan mudah, namun Gates percaya pada visinya dan berani mengambil langkah tersebut.
-                    </p>
-                    <img src="https://hips.hearstapps.com/hmg-prod/images/chairman-and-chief-software-architect-of-microsoft-news-photo-1739396688.pjpeg?crop=1.00xw:0.994xh;0,0&resize=980:*" alt="" style="width: 400px; height: auto;">
-                    <p class="paragraph">
-                        Inovasi dan adaptasi menjadi pelajaran penting berikutnya. Gates selalu berada di garis depan teknologi, tidak pernah berhenti belajar dan berinovasi. Ia memahami bahwa dunia teknologi bergerak cepat dan hanya mereka yang mampu beradaptasi yang akan bertahan.
-                    </p>
-
-                    <p class="paragraph">
-                    Kesuksesan sejati tidak hanya diukur dari kekayaan materi. Setelah pensiun dari Microsoft, Gates mendedikasikan hidupnya untuk filantropi melalui Bill & Melinda Gates Foundation. Ia membuktikan bahwa kesuksesan yang bermakna adalah ketika kita bisa memberikan dampak positif bagi kehidupan orang lain, terutama dalam bidang kesehatan dan pendidikan global.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Section 4: Kesimpulan -->
-            <section class="section">
-                <div class="section-number">04</div>
-                <h2 class="section-title">Kesimpulan</h2>
-                
-                <div class="content">
-                    <p class="paragraph">
-                        Bill Gates adalah bukti nyata bahwa kombinasi antara visi, kerja keras, inovasi, dan kepedulian sosial dapat menciptakan dampak luar biasa bagi dunia. Kisahnya menginspirasi jutaan orang untuk berani bermimpi besar dan tidak takut mengambil risiko untuk mewujudkan impian tersebut.
-                    </p>
-                    </p>
-                </div>
-            </section>
-        </main>
+    <!-- PROFILE PICTURE -->
+    <div class="profile-wrap">
+      <div class="profile-card">
+        <div class="profile-bg-shape"></div>
+        <div class="profile-img-wrapper">
+          
+            <img src="https://t3gwlq6lq8qecvhk.public.blob.vercel-storage.com/home-card.jpeg" alt="Foto Daffa" style="width:100%;height:100%;object-fit:cover;">
+         
+          <div class="avatar-svg">
+            <svg viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- body -->
+              <ellipse cx="130" cy="340" rx="110" ry="80" fill="#52b788"/>
+              <!-- head -->
+              <circle cx="130" cy="135" r="62" fill="#a78bfa" opacity=".15"/>
+              <circle cx="130" cy="132" r="58" fill="#f4a261" opacity=".9"/>
+              <!-- hair -->
+              <ellipse cx="130" cy="82" rx="54" ry="30" fill="#1a1a18"/>
+              <ellipse cx="82" cy="105" rx="14" ry="28" fill="#1a1a18"/>
+              <ellipse cx="178" cy="105" rx="14" ry="28" fill="#1a1a18"/>
+              <!-- eyes -->
+              <circle cx="112" cy="130" r="7" fill="#1a1a18"/>
+              <circle cx="148" cy="130" r="7" fill="#1a1a18"/>
+              <circle cx="114" cy="128" r="2.5" fill="#fff"/>
+              <circle cx="150" cy="128" r="2.5" fill="#fff"/>
+              <!-- smile -->
+              <path d="M114 152 Q130 165 146 152" stroke="#1a1a18" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="profile-badge">
+          🎓 Mahasiswa Aktif
+        </div>
+      </div>
     </div>
 
-    <script>
-        // Scroll Progress Bar
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('progressBar').style.width = scrolled + '%';
-        });
+    <!-- ABOUT TEXT + CONTACT -->
+    <div class="about-text">
+      <p class="section-label">About Me</p>
+      <h2>Semangat belajar,<br>siap berkontribusi</h2>
+      <p>
+        Saya mahasiswa Teknik Informatika yang memiliki ketertarikan di bidang pengembangan aplikasi dan sistem informasi. Saya suka mengeksplorasi teknologi baru dan menerapkannya dalam proyek nyata.
+      </p>
+      <p>
+        Di waktu luang, saya senang bereksperimen dengan berbagai tools dan framework untuk terus mengasah kemampuan.
+      </p>
 
-        // Smooth reveal on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+      <!-- INFO / CONTACT SECTION -->
+      <div class="contact-grid">
+        <a href="mailto:daffaardhana01@gmail.com" class="contact-item">
+          <div class="contact-label">Email</div>
+          <div class="contact-value">daffaardhana01@gmail.com</div>
+        </a>
+        <a href="https://github.com/Freasey" target="_blank" class="contact-item">
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value">github.com/Freasey</div>
+        </a>
+        <a href="https://linkedin.com/in/daffa-ardhana-031424330" target="_blank" class="contact-item">
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">linkedin.com/in/daffa-ardhana</div>
+        </a>
+        <a href="https://www.instagram.com/_freasey_" target="_blank" class="contact-item">
+          <div class="contact-label">Instagram</div>
+          <div class="contact-value">@_freasey_</div>
+        </a>
+      </div>
+    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+  </section>
 
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+  <footer>
+    <p>© 2025 Daffa · Dibuat dengan semangat ☕</p>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
 </body>
 </html>
